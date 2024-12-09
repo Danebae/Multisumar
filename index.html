@@ -241,7 +241,7 @@
 		}
 		function handleTimeout() {
 			const resultElement = document.getElementById("result");
-			resultElement.innerText = `Tiempo agotado. La respuesta correcta era ${correctAnswer}.`;
+			resultElement.innerText = `Tiempo agotado. Introduce la respuesta correcta para continuar.`;
 			resultElement.style.color = "red";
 			if (!repitiendo) updateScore(-1);
 			repite();
@@ -267,11 +267,7 @@
 					}
 					if (score < targetScore) siguiente();
 				} else {
-					if (isNaN(userAnswer)) {
-						resultElement.innerText = `Incorrecto. Tu respuesta no era un numero. La respuesta correcta era: "${correctAnswer}".`;
-					} else {
-						resultElement.innerText = `Incorrecto. Tu respuesta fue: "${userAnswer}" La respuesta correcta era: "${correctAnswer}".`;
-					}
+					resultElement.innerText = `Incorrecto. Introduce la respuesta correcta para continuar.`;
 					resultElement.style.color = "red";
 					if (!repitiendo) updateScore(-1);
 					repite();
