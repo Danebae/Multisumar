@@ -252,9 +252,9 @@
 				const userAnswer = parseInt(document.getElementById("answer").value);
 				const resultElement = document.getElementById("result");
 				if (userAnswer === correctAnswer) {
+					resultElement.style.color = "green";
 					if (!repitiendo) {
 						resultElement.innerText = `¡Correcto! Tiempo: ${timer.toFixed(1)} s.`;
-						resultElement.style.color = "green";
 						if (timer <= doublePointThreshold) {
 							updateScore(2);
 							resultElement.innerText = "¡Correcto! Has ganado 2 puntos.";
@@ -264,12 +264,14 @@
 						} else {
 							resultElement.innerText = "¡Correcto!";
 						}
+					} else {
+						resultElement.innerText = "¡Correcto!";
 					}
 					if (score < targetScore) siguiente();
 				} else {
 					resultElement.innerText = `Incorrecto. Introduce la respuesta correcta para continuar.`;
 					resultElement.style.color = "red";
-					if (!repitiendo) updateScore(-1);
+					updateScore(-1);
 					repite();
 				}
 			}
