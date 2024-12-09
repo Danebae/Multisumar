@@ -269,7 +269,11 @@
 					}
 					if (score < targetScore) siguiente();
 				} else {
-					resultElement.innerText = `Incorrecto. Introduce la respuesta correcta para continuar.`;
+					if (isNaN(userAnswer)) {
+						resultElement.innerText = `Incorrecto. Tu respuesta no era un numero. Introduce la respuesta correcta para continuar.`;
+					} else {
+						resultElement.innerText = `Incorrecto. Tu respuesta fue: "${userAnswer}" Introduce la respuesta correcta para continuar.`;
+					}
 					resultElement.style.color = "red";
 					updateScore(-1);
 					repite();
